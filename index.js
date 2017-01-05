@@ -6,5 +6,7 @@ console.log("Source Path" + sourcePath);
 console.log("Target Path" + targetPath);
 
 fs.readFile(sourcePath, 'utf8', (err, data) => {
-  console.log(data);
+  fs.writeFile(targetPath, data, (err) => {
+    if(err)console.log(err);
+  })
 });
