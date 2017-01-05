@@ -3,7 +3,7 @@ const sourcePath = process.argv[2];
 const targetPath = process.argv[3];
 
 function convertLine(str){
-  return str;
+  return str.replace("-", "[ ]").replace("x", "[X]");
 }
 
 function writeInfoToFile(data){
