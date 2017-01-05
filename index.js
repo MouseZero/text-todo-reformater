@@ -3,18 +3,20 @@ const sourcePath = process.argv[2];
 const targetPath = process.argv[3];
 
 function convertLine(str){
-  return str.replace(/^\s*-\s/g, " [ ] ").replace(/^\s*x\s/g, " [X] ");
+  return str
+    .replace(/^\s*-\s/g, " <span style=\"font-weight: bold\">[ ]</span> ")
+    .replace(/^\s*x\s/g, " <span style=\"font-weight: bold;color: red;\">[X]</span> ")
 }
 
 function writeInfoToFile(data){
   fs.writeFile(targetPath, data, (err) => {
-    const lines = data.split(/\r|\n/g);
-    const htmlLines = lines.map(convertLine);
-    console.log(htmlLines);
     if(err)console.log(err);
   });
 }
 
 fs.readFile(sourcePath, 'utf8', (err, data) => {
-  writeInfoToFile(data);
+    const lines = data.split(/\r|\n/g);
+    const htmlLines = lines.map(convertLine);
+    console.log(htmlLines);
+  writeInfoToFile(htmlLines.join("<br />"));
 });
