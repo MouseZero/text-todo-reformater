@@ -8,7 +8,8 @@ const add5 = F.map(R.add(5));
 const cont5 = F.container(5);
 
 
-console.log( add5(cont5) )
+console.log( add5(cont5) );
+console.log( F.map(R.add(5), 9) );
 
 function convertLine(str){
   return str
