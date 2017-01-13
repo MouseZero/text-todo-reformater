@@ -1,6 +1,10 @@
 const fs = require('fs');
 const sourcePath = process.argv[2];
 const targetPath = process.argv[3];
+const R = require('ramda');
+const F = require('./functional');
+
+console.log(F.Container(5).val);
 
 function convertLine(str){
   return str
@@ -15,8 +19,8 @@ function writeInfoToFile(data){
 }
 
 fs.readFile(sourcePath, 'utf8', (err, data) => {
-    const lines = data.split(/\r|\n/g);
-    const htmlLines = lines.map(convertLine);
-    console.log(htmlLines);
+  const lines = data.split(/\r|\n/g);
+  const htmlLines = lines.map(convertLine);
+  console.log(htmlLines.join("<br />"));
   writeInfoToFile(htmlLines.join("<br />"));
 });
