@@ -4,7 +4,7 @@ const targetPath = process.argv[3];
 const R = require('ramda');
 const F = require('./functional');
 
-console.log(F.Container(5).val);
+console.log( F.add(F.container(5), {val:9}).val );
 
 function convertLine(str){
   return str
